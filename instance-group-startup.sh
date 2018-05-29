@@ -8,9 +8,9 @@ METADATA=http://metadata.google.internal/computeMetadata/v1
 EXTERNAL_IP=$(curl -s "$METADATA/instance/network-interfaces/0/access-configs/0/external-ip" -H "Metadata-Flavor: Google")
 
 # Get access to call the SQL API
-curl -s --header "Authorization: Bearer $ACCESS_TOKEN" -X GET https://www.googleapis.com/sql/v1beta4/projects/$PROJECT/instances/$DB?fields=settings/ipConfiguration/authorizedNetworks/value | grep value | awk -F\" '{print $4}' && \
 SVC_ACCT=$METADATA/instance/service-accounts/default && \
 ACCESS_TOKEN=$(curl -H 'Metadata-Flavor: Google' $SVC_ACCT/token | cut -d'"' -f 4)
+curl -s --header "Authorization: Bearer $ACCESS_TOKEN" -X GET https://www.googleapis.com/sql/v1beta4/projects/$PROJECT/instances/$DB?fields=settings/ipConfiguration/authorizedNetworks/value | grep value | awk -F\" '{print $4}' && \
 
 # Get the IPs that are authorized to the database
 EXISTING_IPS=$(curl -s --header "Authorization: Bearer $ACCESS_TOKEN" -X GET https://www.googleapis.com/sql/v1beta4/projects/$PROJECT/instances/$DB?fields=settings/ipConfiguration/authorizedNetworks/value | grep -B1 -A1 value | tr -d '\n')
