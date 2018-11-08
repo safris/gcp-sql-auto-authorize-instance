@@ -25,8 +25,7 @@ EXISTING_IPS=$(curl -s --header "Authorization: Bearer $ACCESS_TOKEN" -X GET htt
 curl -s --header "Authorization: Bearer ${ACCESS_TOKEN}" \
      --header 'Content-Type: application/json' \
      --data "{\"settings\":{\"ipConfiguration\":{\"authorizedNetworks\":[{\"value\":\"$EXTERNAL_IP\"}$EXISTING_IPS]}}}" \
-     -X PATCH \
-     https://www.googleapis.com/sql/v1beta4/projects/$PROJECT/instances/$DB
+     -X PATCH https://www.googleapis.com/sql/v1beta4/projects/$PROJECT/instances/$DB
 
 # Dump the database settings for visual verification
 curl -s --header "Authorization: Bearer $ACCESS_TOKEN" -X GET https://www.googleapis.com/sql/v1beta4/projects/$PROJECT/instances/$DB?fields=settings
