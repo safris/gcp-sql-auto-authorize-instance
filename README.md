@@ -18,12 +18,13 @@ This script is meant to be used as the `Startup Script` in the configuration for
 
 To install this script:
 
-1. In the script, replace `<your project id>` with your project id, and `<your db id>` with your DB id.
-2. Go to [cloud.google.com](https://cloud.google.com/) -> Compute Engine -> Instance Templates.
-3. Create a new Instance Template, or copy an existing one.
-4. Click on `Management, security, disks, networking, sole tenancy` to expand the desired configuration fields.
-5. In the `Automation` section, copy+paste the script you edited in (1) into the `Startup script` textbox.
-6. Click `Create`, and you're done!
+1. [Enable a Sql Admin API](https://console.developers.google.com/apis/api/sqladmin.googleapis.com/overview) for the project containing your instance
+2. In the script, replace `<your project id>` with your project id, and `<your db id>` with your DB id.
+3. Go to [cloud.google.com](https://cloud.google.com/) -> Compute Engine -> Instance Templates.
+4. Create a new Instance Template, or copy an existing one.
+5. Click on `Management, security, disks, networking, sole tenancy` to expand the desired configuration fields.
+6. In the `Automation` section, copy+paste the script you edited in (1) into the `Startup script` textbox.
+7. Click `Create`, and you're done!
 
 #### How does it work?
 
